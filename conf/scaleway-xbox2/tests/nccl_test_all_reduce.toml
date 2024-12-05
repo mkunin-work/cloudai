@@ -26,5 +26,7 @@ test_template_name = "NcclTest"
 "iters" = "100"
 "warmup_iters" = "50"
 
+"docker_image_url" = "nvcr.io/nvidia/pytorch:24.11-py3"
+
 [extra_cmd_args]
 "--stepfactor" = "2"

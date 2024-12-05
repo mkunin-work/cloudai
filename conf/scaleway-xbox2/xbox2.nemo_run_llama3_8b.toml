@@ -14,22 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name = "nccl-test"
-
+name = "nemo_run_llama3_8b"
 
 [[Tests]]
-id = "Tests.1"
-test_name = "nccl_test_all_reduce"
+id = "nemo_run_llama3_8b_1"
+test_name = "nemo_run_llama3_8b"
+num_nodes = "1"
+time_limit = "00:30:00"
+
+[[Tests]]
+id = "nemo_run_llama3_8b_2"
+test_name = "nemo_run_llama3_8b"
 num_nodes = "2"
-time_limit = "00:20:00"
-
-[[Tests]]
-id = "Tests.2"
-test_name = "nccl_test_all_reduce"
-num_nodes = "4"
-time_limit = "00:20:00"
+time_limit = "00:30:00"
   [[Tests.dependencies]]
   type = "start_post_comp"
-  id = "Tests.1"
-
-
+  id = "nemo_run_llama3_8b_1"

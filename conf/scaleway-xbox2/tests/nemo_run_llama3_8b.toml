@@ -14,22 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name = "nccl-test"
+name = "nemo_run_llama3_8b"
+description = "nemo_run_llama3_8b"
+test_template_name = "NeMoRun"
 
+[cmd_args]
+"docker_image_url" = "nvcr.io/nvidia/nemo:24.09"
+"task" = "pretrain"
+"recipe_name" = "llama3_8b"
 
-[[Tests]]
-id = "Tests.1"
-test_name = "nccl_test_all_reduce"
-num_nodes = "2"
-time_limit = "00:20:00"
-
-[[Tests]]
-id = "Tests.2"
-test_name = "nccl_test_all_reduce"
-num_nodes = "4"
-time_limit = "00:20:00"
-  [[Tests.dependencies]]
-  type = "start_post_comp"
-  id = "Tests.1"
-
-
+[extra_cmd_args]
+"trainer.max_steps" = "5"
+"trainer.val_check_interval" = "1000"
+"log.ckpt.save_on_train_epoch_end" = "False"
+"log.ckpt.save_last" = "False"
